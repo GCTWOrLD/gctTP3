@@ -35,5 +35,7 @@ public class Tp3Application implements CommandLineRunner {
 
         System.out.println(service.findByAuteur("Paul Laroche"));
         System.out.println(service.findByAnnee(2001));
+        System.out.println(service.findByTitre("Math 101"));
+        System.out.println(service.findByTitre("Math"));
     }
 }

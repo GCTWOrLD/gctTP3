@@ -50,4 +50,8 @@ public class BiblioService {
     public Document findByAnnee(int annee) {
         return documentRepository.findByAnnee(annee);
     }
+
+    public Document findByTitre(String titreDocument) {
+        return documentRepository.findByTitre(titreDocument);
+    }
 }
