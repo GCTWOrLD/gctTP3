@@ -34,5 +34,6 @@ public class Tp3Application implements CommandLineRunner {
         final Cd cd1 = service.saveCd("Discovery", "Daft Punk", 2001, 1,"1h01", "Electronique", "Warner Music France");
 
         System.out.println(service.findByAuteur("Paul Laroche"));
+        System.out.println(service.findByAnnee(2001));
     }
 }

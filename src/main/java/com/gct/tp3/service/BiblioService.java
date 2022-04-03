@@ -46,4 +46,8 @@ public class BiblioService {
     public Document findByAuteur(String auteurDocument) {
         return documentRepository.findByAuteur(auteurDocument);
     }
+
+    public Document findByAnnee(int annee) {
+        return documentRepository.findByAnnee(annee);
+    }
 }

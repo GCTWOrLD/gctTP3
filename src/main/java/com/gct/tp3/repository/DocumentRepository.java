@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DocumentRepository extends JpaRepository<Document, Long> {
     Document findByAuteur(String auteurDocument);
+    Document findByAnnee(int annee);
 }
