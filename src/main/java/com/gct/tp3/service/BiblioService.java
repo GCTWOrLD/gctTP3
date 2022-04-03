@@ -1,9 +1,6 @@
 package com.gct.tp3.service;
 
-import com.gct.tp3.modele.Cd;
-import com.gct.tp3.modele.Client;
-import com.gct.tp3.modele.Dvd;
-import com.gct.tp3.modele.Livre;
+import com.gct.tp3.modele.*;
 import com.gct.tp3.repository.AmendeRepository;
 import com.gct.tp3.repository.DocumentRepository;
 import com.gct.tp3.repository.EmpruntRepository;
@@ -34,15 +31,19 @@ public class BiblioService {
                 numeroCivique, null, null));
     }
 
-    public Livre saveLivre(String titre, String auteur, int annee, String editeur, String genre) {
-        return documentRepository.save(new Livre(titre, auteur, annee, editeur, genre));
+    public Livre saveLivre(String titre, String auteur, int annee, int examplaires, String editeur, String genre) {
+        return documentRepository.save(new Livre(titre, auteur, annee, examplaires, editeur, genre));
     }
 
-    public Dvd saveDvd(String titre, String auteur, int annee, String duree, String genre, String studio) {
-        return documentRepository.save(new Dvd(titre, auteur, annee, duree, genre, studio));
+    public Dvd saveDvd(String titre, String auteur, int annee, int examplaires, String duree, String genre, String studio) {
+        return documentRepository.save(new Dvd(titre, auteur, annee, examplaires, duree, genre, studio));
     }
 
-    public Cd saveCd(String titre, String auteur, int annee, String duree, String style, String studio) {
-        return documentRepository.save(new Cd(titre, auteur, annee, duree, style, studio));
+    public Cd saveCd(String titre, String auteur, int annee, int examplaires, String duree, String style, String studio) {
+        return documentRepository.save(new Cd(titre, auteur, annee, examplaires, duree, style, studio));
+    }
+
+    public Document findByAuteur(String auteurDocument) {
+        return documentRepository.findByAuteur(auteurDocument);
     }
 }

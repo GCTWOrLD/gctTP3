@@ -14,8 +14,8 @@ public class Cd extends Document {
 
     }
 
-    public Cd(String titre, String auteur, int annee, String duree, String style, String studio) {
-        super(titre, auteur, annee);
+    public Cd(String titre, String auteur, int annee, int examplaires, String duree, String style, String studio) {
+        super(titre, auteur, annee, examplaires);
         this.duree = duree;
         this.style = style;
         this.studio = studio;

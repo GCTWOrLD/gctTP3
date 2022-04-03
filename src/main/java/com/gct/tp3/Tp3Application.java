@@ -1,4 +1,4 @@
-package com.gct.tp3.presentation;
+package com.gct.tp3;
 
 import com.gct.tp3.modele.Cd;
 import com.gct.tp3.modele.Client;
@@ -27,11 +27,12 @@ public class Tp3Application implements CommandLineRunner {
                 "password", "gct@gmail.com",
                 "514-704-1694", "147", "J6K 4L5", "104");
 
-        final Livre livre1 = service.saveLivre("Math 101", "Paul Laroche", 1999, "Éditions Soleil", "Roman");
+        final Livre livre1 = service.saveLivre("Math 101", "Paul Laroche", 1999, 2,"Éditions Soleil", "Roman");
 
-        final Dvd dvd1 = service.saveDvd("Star Wars 1", "George Lucas", 2000, "2h00", "Science-Fiction", "LucasArts");
+        final Dvd dvd1 = service.saveDvd("Star Wars 1", "George Lucas", 2000, 4,"2h00", "Science-Fiction", "LucasArts");
 
-        final Cd cd1 = service.saveCd("Discovery", "Daft Punk", 2001, "1h01", "Electronique", "Warner Music France");
+        final Cd cd1 = service.saveCd("Discovery", "Daft Punk", 2001, 1,"1h01", "Electronique", "Warner Music France");
+
+        System.out.println(service.findByAuteur("Paul Laroche"));
     }
-
 }

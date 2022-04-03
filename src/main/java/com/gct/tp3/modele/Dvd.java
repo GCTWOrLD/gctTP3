@@ -14,8 +14,8 @@ public class Dvd extends Document {
 
     }
 
-    public Dvd(String titre, String auteur, int annee, String duree, String genre, String studio) {
-        super(titre, auteur, annee);
+    public Dvd(String titre, String auteur, int annee, int examplaires, String duree, String genre, String studio) {
+        super(titre, auteur, annee, examplaires);
         this.duree = duree;
         this.genre = genre;
         this.studio = studio;

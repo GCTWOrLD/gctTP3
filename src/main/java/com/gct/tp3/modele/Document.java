@@ -14,15 +14,17 @@ public abstract class Document {
     private String titre;
     private String auteur;
     private int annee;
+    private int examplaires;
 
     public Document() {
 
     }
 
-    public Document(String titre, String auteur, int annee) {
+    public Document(String titre, String auteur, int annee, int examplaires) {
         this.titre = titre;
         this.auteur = auteur;
         this.annee = annee;
+        this.examplaires = examplaires;
     }
 
     public long getId() {
@@ -55,6 +57,14 @@ public abstract class Document {
 
     public void setAnnee(int annee) {
         this.annee = annee;
+    }
+
+    public int getExamplaires() {
+        return examplaires;
+    }
+
+    public void setExamplaires(int examplaires) {
+        this.examplaires = examplaires;
     }
 
     @Override
