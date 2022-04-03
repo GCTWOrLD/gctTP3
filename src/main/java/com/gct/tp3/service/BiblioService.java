@@ -54,4 +54,28 @@ public class BiblioService {
     public Document findByTitre(String titreDocument) {
         return documentRepository.findByTitre(titreDocument);
     }
+
+    /*public Document findByCategorie() {
+        return null;
+    }*/
+
+    //emprunt s'il reste des examplaires (1)
+    public void emprunterDocument(String nomDoucment, long idClient) {
+        //todo
+    }
+
+    //retour d'un document
+    public void retournerDoucment(String nomDocument, long idClient) {
+        //todo
+    }
+
+    //payement des frais
+    public void payerFraisRetard(long idClient) {
+        //todo
+    }
+
+    //liste des emprunts + dates de retour + frais
+    public void listerEmprunts(long idClient) {
+        //todo
+    }
 }

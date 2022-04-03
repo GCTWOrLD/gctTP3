@@ -7,4 +7,5 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
     Document findByAuteur(String auteurDocument);
     Document findByAnnee(int annee);
     Document findByTitre(String titreDocument);
+    //Document findByCategorie(String categorie);
 }
