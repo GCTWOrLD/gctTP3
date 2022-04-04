@@ -85,9 +85,15 @@ public class BiblioService {
         }
     }
 
-    //retour d'un document
-    public void retournerDoucment(String nomDocument, long idClient) {
-        //todo
+    public void retournerDocument(Client client, Document doc) {
+        List<Emprunt> emprunts = client.getEmprunts();
+        for (Emprunt emprunt : emprunts) {
+            if (emprunt.getDocument().equals(doc)) {
+                emprunts.remove(emprunt);
+                doc.setExamplaires(doc.getExamplaires() + 1);
+                System.out.println("Retour effectué.");
+            }
+        }
     }
 
     //payement des frais

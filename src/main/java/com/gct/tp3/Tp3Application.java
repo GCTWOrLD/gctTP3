@@ -43,5 +43,10 @@ public class Tp3Application implements CommandLineRunner {
 
         service.emprunterDocument(client1, livre1);
         service.emprunterDocument(client1, dvd1);
+
+        System.out.println(livre1.getExamplaires());
+        service.retournerDocument(client1, livre1);
+        System.out.println(client1);
+        System.out.println(livre1.getExamplaires());
     }
 }
