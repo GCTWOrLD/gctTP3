@@ -5,12 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface DocumentRepository extends JpaRepository<Document, Long> {
-    Document findByAuteur(String auteurDocument);
-    Document findByAnnee(int annee);
+    List<Document> findByAuteur(String auteurDocument);
+    List<Document> findByAnnee(int annee);
 
     @Query("select d from Document d where d.titre like %:titreDocument%")
-    Document findByTitre(@Param("titreDocument")String text);
+    List<Document> findByTitre(@Param("titreDocument")String text);
 
-    Document findByCategorie(String categorie);
+    List<Document> findByCategorie(String categorie);
 }

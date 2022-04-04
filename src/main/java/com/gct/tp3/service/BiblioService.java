@@ -8,6 +8,8 @@ import com.gct.tp3.repository.PersonneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class BiblioService {
 
@@ -43,19 +45,19 @@ public class BiblioService {
         return documentRepository.save(new Cd(titre, auteur, annee, categorie, examplaires, duree, studio));
     }
 
-    public Document findByAuteur(String auteurDocument) {
+    public List<Document> findByAuteur(String auteurDocument) {
         return documentRepository.findByAuteur(auteurDocument);
     }
 
-    public Document findByAnnee(int annee) {
+    public List<Document> findByAnnee(int annee) {
         return documentRepository.findByAnnee(annee);
     }
 
-    public Document findByTitre(String titreDocument) {
+    public List<Document> findByTitre(String titreDocument) {
         return documentRepository.findByTitre(titreDocument);
     }
 
-    public Document findByCategorie(String categorie) {
+    public List<Document> findByCategorie(String categorie) {
         return documentRepository.findByCategorie(categorie);
     }
 
