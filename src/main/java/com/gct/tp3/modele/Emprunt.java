@@ -79,7 +79,7 @@ public class Emprunt {
                 "id=" + id +
                 ", dateEmprunt=" + dateEmprunt +
                 ", dateRetour=" + dateRetour +
-                ", client=" + client +
+                ", client=" + client.getPrenom() + " " + client.getNom() +
                 ", document=" + document +
                 '}';
     }

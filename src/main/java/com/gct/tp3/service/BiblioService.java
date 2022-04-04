@@ -8,6 +8,9 @@ import com.gct.tp3.repository.PersonneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -61,9 +64,25 @@ public class BiblioService {
         return documentRepository.findByCategorie(categorie);
     }
 
-    //emprunt s'il reste des examplaires (1)
-    public void emprunterDocument(String nomDoucment, long idClient) {
-        //todo
+    public void emprunterDocument(Client client, Document doc) {
+        if (client.getEmprunts() == null) {
+            List<Emprunt> emprunts = new ArrayList<>();
+            client.setEmprunts(emprunts);
+        }
+        Emprunt emprunt = new Emprunt(LocalDateTime.now(), null, client, doc);
+        if (doc.getExamplaires() > 0) {
+            if (doc.getClass().equals(Livre.class)) {
+                emprunt.setDateRetour(LocalDateTime.now().plus(3, ChronoUnit.WEEKS));
+            } else if (doc.getClass().equals(Cd.class)) {
+                emprunt.setDateRetour(LocalDateTime.now().plus(2, ChronoUnit.WEEKS));
+            } else if (doc.getClass().equals(Dvd.class)) {
+                emprunt.setDateRetour(LocalDateTime.now().plus(1, ChronoUnit.WEEKS));
+            }
+            client.getEmprunts().add(emprunt);
+            System.out.println("Emprunt effectué.");
+        } else {
+            System.out.println("IL ne reste plus d'examplaires de ce document.");
+        }
     }
 
     //retour d'un document
