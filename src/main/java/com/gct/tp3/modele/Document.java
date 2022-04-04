@@ -14,16 +14,18 @@ public abstract class Document {
     private String titre;
     private String auteur;
     private int annee;
+    private String categorie;
     private int examplaires;
 
     public Document() {
 
     }
 
-    public Document(String titre, String auteur, int annee, int examplaires) {
+    public Document(String titre, String auteur, int annee, String categorie, int examplaires) {
         this.titre = titre;
         this.auteur = auteur;
         this.annee = annee;
+        this.categorie = categorie;
         this.examplaires = examplaires;
     }
 
@@ -59,6 +61,14 @@ public abstract class Document {
         this.annee = annee;
     }
 
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
     public int getExamplaires() {
         return examplaires;
     }
@@ -74,6 +84,8 @@ public abstract class Document {
                 ", titre='" + titre + '\'' +
                 ", auteur='" + auteur + '\'' +
                 ", annee='" + annee + '\'' +
+                ", categorie='" + categorie + '\'' +
+                ", examplaires='" + examplaires + '\'' +
                 '}';
     }
 }

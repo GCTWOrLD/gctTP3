@@ -27,15 +27,18 @@ public class Tp3Application implements CommandLineRunner {
                 "password", "gct@gmail.com",
                 "514-704-1694", "147", "J6K 4L5", "104");
 
-        final Livre livre1 = service.saveLivre("Math 101", "Paul Laroche", 1999, 2,"Éditions Soleil", "Roman");
+        final Livre livre1 = service.saveLivre("Math 101", "Paul Laroche", 1999, "Roman", 2,"Éditions Soleil");
 
-        final Dvd dvd1 = service.saveDvd("Star Wars 1", "George Lucas", 2000, 4,"2h00", "Science-Fiction", "LucasArts");
+        final Livre livre2 = service.saveLivre("Le Lion", "Denis Tremblay", 2007, "Roman", 3,"Éditions Lune");
 
-        final Cd cd1 = service.saveCd("Discovery", "Daft Punk", 2001, 1,"1h01", "Electronique", "Warner Music France");
+        final Dvd dvd1 = service.saveDvd("Star Wars 1", "George Lucas", 2000, "Science-fiction", 4,"2h00", "Science-Fiction");
+
+        final Cd cd1 = service.saveCd("Discovery", "Daft Punk", 2001, "Electronique", 1,"1h01", "Warner Music France");
 
         System.out.println(service.findByAuteur("Paul Laroche"));
         System.out.println(service.findByAnnee(2001));
         System.out.println(service.findByTitre("Math 101"));
         System.out.println(service.findByTitre("Star"));
+        System.out.println(service.findByCategorie("Roman"));
     }
 }

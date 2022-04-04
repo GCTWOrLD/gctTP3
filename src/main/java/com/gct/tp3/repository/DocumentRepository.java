@@ -11,6 +11,6 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
 
     @Query("select d from Document d where d.titre like %:titreDocument%")
     Document findByTitre(@Param("titreDocument")String text);
-    
-    //Document findByCategorie(String categorie);
+
+    Document findByCategorie(String categorie);
 }

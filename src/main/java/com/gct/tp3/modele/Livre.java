@@ -7,16 +7,14 @@ import javax.persistence.Entity;
 @DiscriminatorValue("Livre")
 public class Livre extends Document {
     private String editeur;
-    private String genre;
 
     public Livre() {
 
     }
 
-    public Livre(String titre, String auteur, int annee, int examplaires, String editeur, String genre) {
-        super(titre, auteur, annee, examplaires);
+    public Livre(String titre, String auteur, int annee, String categorie, int examplaires, String editeur) {
+        super(titre, auteur, annee, categorie, examplaires);
         this.editeur = editeur;
-        this.genre = genre;
     }
 
     public String getEditeur() {
@@ -27,19 +25,10 @@ public class Livre extends Document {
         this.editeur = editeur;
     }
 
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
     @Override
     public String toString() {
         return "Livre{" +
                 "editeur='" + editeur + '\'' +
-                ", genre='" + genre + '\'' +
                 "} " + super.toString();
     }
 }

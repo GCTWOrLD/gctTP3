@@ -31,16 +31,16 @@ public class BiblioService {
                 numeroCivique, null, null));
     }
 
-    public Livre saveLivre(String titre, String auteur, int annee, int examplaires, String editeur, String genre) {
-        return documentRepository.save(new Livre(titre, auteur, annee, examplaires, editeur, genre));
+    public Livre saveLivre(String titre, String auteur, int annee, String categorie, int examplaires, String editeur) {
+        return documentRepository.save(new Livre(titre, auteur, annee, categorie, examplaires, editeur));
     }
 
-    public Dvd saveDvd(String titre, String auteur, int annee, int examplaires, String duree, String genre, String studio) {
-        return documentRepository.save(new Dvd(titre, auteur, annee, examplaires, duree, genre, studio));
+    public Dvd saveDvd(String titre, String auteur, int annee, String categorie, int examplaires, String duree, String studio) {
+        return documentRepository.save(new Dvd(titre, auteur, annee, categorie, examplaires, duree, studio));
     }
 
-    public Cd saveCd(String titre, String auteur, int annee, int examplaires, String duree, String style, String studio) {
-        return documentRepository.save(new Cd(titre, auteur, annee, examplaires, duree, style, studio));
+    public Cd saveCd(String titre, String auteur, int annee, String categorie, int examplaires, String duree, String studio) {
+        return documentRepository.save(new Cd(titre, auteur, annee, categorie, examplaires, duree, studio));
     }
 
     public Document findByAuteur(String auteurDocument) {
@@ -55,9 +55,9 @@ public class BiblioService {
         return documentRepository.findByTitre(titreDocument);
     }
 
-    /*public Document findByCategorie() {
-        return null;
-    }*/
+    public Document findByCategorie(String categorie) {
+        return documentRepository.findByCategorie(categorie);
+    }
 
     //emprunt s'il reste des examplaires (1)
     public void emprunterDocument(String nomDoucment, long idClient) {

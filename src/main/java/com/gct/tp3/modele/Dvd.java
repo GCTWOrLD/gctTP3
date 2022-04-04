@@ -7,17 +7,15 @@ import javax.persistence.Entity;
 @DiscriminatorValue("Dvd")
 public class Dvd extends Document {
     private String duree;
-    private String genre;
     private String studio;
 
     public Dvd() {
 
     }
 
-    public Dvd(String titre, String auteur, int annee, int examplaires, String duree, String genre, String studio) {
-        super(titre, auteur, annee, examplaires);
+    public Dvd(String titre, String auteur, int annee, String categorie, int examplaires, String duree, String studio) {
+        super(titre, auteur, annee, categorie, examplaires);
         this.duree = duree;
-        this.genre = genre;
         this.studio = studio;
     }
 
@@ -27,14 +25,6 @@ public class Dvd extends Document {
 
     public void setDuree(String duree) {
         this.duree = duree;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getStudio() {
@@ -49,7 +39,6 @@ public class Dvd extends Document {
     public String toString() {
         return "Dvd{" +
                 "duree='" + duree + '\'' +
-                ", genre='" + genre + '\'' +
                 ", studio='" + studio + '\'' +
                 "} " + super.toString();
     }
