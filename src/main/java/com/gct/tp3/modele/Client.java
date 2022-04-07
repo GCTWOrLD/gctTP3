@@ -34,6 +34,14 @@ public class Client extends Personne {
         this.emprunts = emprunts;
     }
 
+    public List<Amende> getAmendes() {
+        return amendes;
+    }
+
+    public void setAmendes(List<Amende> amendes) {
+        this.amendes = amendes;
+    }
+
     @Override
     public String toString() {
         return "Client{" +

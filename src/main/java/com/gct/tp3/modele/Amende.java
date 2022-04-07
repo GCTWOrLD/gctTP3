@@ -11,7 +11,7 @@ public class Amende {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private BigDecimal montant;
+    private int montant;
     private LocalDateTime dateRetard;
     private int nbDeJoursEnRetard;
     private String nomDuDocument;
@@ -23,7 +23,7 @@ public class Amende {
 
     }
 
-    public Amende(BigDecimal montant, LocalDateTime dateRetard, int nbDeJoursEnRetard, String nomDuDocument, Client client) {
+    public Amende(int montant, LocalDateTime dateRetard, int nbDeJoursEnRetard, String nomDuDocument, Client client) {
         this.montant = montant;
         this.dateRetard = dateRetard;
         this.nbDeJoursEnRetard = nbDeJoursEnRetard;
@@ -39,11 +39,11 @@ public class Amende {
         this.id = id;
     }
 
-    public BigDecimal getMontant() {
+    public int getMontant() {
         return montant;
     }
 
-    public void setMontant(BigDecimal montant) {
+    public void setMontant(int montant) {
         this.montant = montant;
     }
 

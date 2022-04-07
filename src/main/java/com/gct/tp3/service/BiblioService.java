@@ -8,6 +8,7 @@ import com.gct.tp3.repository.PersonneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -96,9 +97,18 @@ public class BiblioService {
         }
     }
 
-    //payement des frais
-    public void payerFraisRetard(long idClient) {
-        //todo
+    public void payerFraisRetard(Client client) {
+        if (client.getAmendes() != null) {
+            List<Amende> amendes = client.getAmendes();
+            for (Amende amende : amendes) {
+                amendes.remove(amende);
+                amendeRepository.delete(amende);
+            }
+            personneRepository.save(client);
+            System.out.println("Frais payés.");
+        } else {
+            System.out.println("Vous n'avez pas de frais à payer.");
+        }
     }
 
     //liste des emprunts + dates de retour + frais
