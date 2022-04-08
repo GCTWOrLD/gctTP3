@@ -8,7 +8,6 @@ import com.gct.tp3.repository.PersonneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -79,7 +78,11 @@ public class BiblioService {
             } else if (doc.getClass().equals(Dvd.class)) {
                 emprunt.setDateRetour(LocalDateTime.now().plus(1, ChronoUnit.WEEKS));
             }
+            doc.setExamplaires(doc.getExamplaires() - 1);
             client.getEmprunts().add(emprunt);
+            personneRepository.save(client);
+            empruntRepository.save(emprunt);
+            documentRepository.save(doc);
             System.out.println("Emprunt effectué.");
         } else {
             System.out.println("IL ne reste plus d'examplaires de ce document.");
@@ -91,10 +94,13 @@ public class BiblioService {
         for (Emprunt emprunt : emprunts) {
             if (emprunt.getDocument().equals(doc)) {
                 emprunts.remove(emprunt);
+                empruntRepository.delete(emprunt);
                 doc.setExamplaires(doc.getExamplaires() + 1);
+                documentRepository.save(doc);
                 System.out.println("Retour effectué.");
             }
         }
+        personneRepository.save(client);
     }
 
     public void payerFraisRetard(Client client) {
@@ -111,8 +117,7 @@ public class BiblioService {
         }
     }
 
-    //liste des emprunts + dates de retour + frais
-    public void listerEmprunts(long idClient) {
+    /*public List<Emprunt> listerEmprunts(long idClient) {
         //todo
-    }
+    }*/
 }

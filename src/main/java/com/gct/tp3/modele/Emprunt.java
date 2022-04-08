@@ -18,7 +18,7 @@ public class Emprunt {
     @JoinColumn(name="Client_ID")
     private Client client;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "Document_ID", referencedColumnName = "id")
     private Document document;
 
