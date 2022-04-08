@@ -36,8 +36,16 @@ public class BiblioService {
                 numeroCivique, null, null));
     }
 
+    public Client saveClient(Client client) {
+        return personneRepository.save(client);
+    }
+
     public Livre saveLivre(String titre, String auteur, int annee, String categorie, int examplaires, String editeur) {
         return documentRepository.save(new Livre(titre, auteur, annee, categorie, examplaires, editeur));
+    }
+
+    public Livre saveLivre(Livre livre) {
+        return documentRepository.save(livre);
     }
 
     public Dvd saveDvd(String titre, String auteur, int annee, String categorie, int examplaires, String duree, String studio) {

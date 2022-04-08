@@ -1,11 +1,19 @@
 package com.gct.tp3.controllers;
 
+import com.gct.tp3.forms.ClientForm;
+import com.gct.tp3.forms.LivreForm;
+import com.gct.tp3.modele.Client;
+import com.gct.tp3.modele.Livre;
 import com.gct.tp3.service.BiblioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class BiblioController {
@@ -22,5 +30,47 @@ public class BiblioController {
         model.addAttribute("pageTitle", "Biblio");
         model.addAttribute("h1Text", "Biblio JavaTown");
         return "index";
+    }
+
+    @GetMapping("/clientcreate")
+    public String getClientCreate(@ModelAttribute ClientForm clientForm,
+                                  Model model,
+                                  RedirectAttributes redirectAttributes) {
+        clientForm = new ClientForm(new Client());
+        model.addAttribute("clientForm", clientForm);
+        return "clientedit";
+    }
+
+    @PostMapping("/clientcreate")
+    public String clientPost(@ModelAttribute ClientForm clientForm,
+                             BindingResult errors,
+                             Model model,RedirectAttributes redirectAttributes) {
+        logger.info("client: " + clientForm);
+        service.saveClient(clientForm.toClient());
+        redirectAttributes.addFlashAttribute("clientForm", clientForm);
+        model.addAttribute("pageTitle", "Client");
+        model.addAttribute("clientForm", clientForm);
+        return "redirect:clientedit/" + clientForm.getId();
+    }
+
+    @GetMapping("/livrecreate")
+    public String getLivreCreate(@ModelAttribute LivreForm livreForm,
+                                  Model model,
+                                  RedirectAttributes redirectAttributes) {
+        livreForm = new LivreForm(new Livre());
+        model.addAttribute("livreForm", livreForm);
+        return "livreedit";
+    }
+
+    @PostMapping("/livrecreate")
+    public String livrePost(@ModelAttribute LivreForm livreForm,
+                             BindingResult errors,
+                             Model model,RedirectAttributes redirectAttributes) {
+        logger.info("livre: " + livreForm);
+        service.saveLivre(livreForm.toLivre());
+        redirectAttributes.addFlashAttribute("livreForm", livreForm);
+        model.addAttribute("pageTitle", "Livre");
+        model.addAttribute("livreForm", livreForm);
+        return "redirect:livreedit/" + livreForm.getId();
     }
 }

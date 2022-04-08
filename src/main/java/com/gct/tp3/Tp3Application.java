@@ -25,7 +25,7 @@ public class Tp3Application implements CommandLineRunner {
 
         final Client client1 = service.saveClient("Gabriel", "Caron-Tawil", "GCT",
                 "password", "gct@gmail.com",
-                "514-704-1694", "147", "J6K 4L5", "104");
+                "(514) 704-1694", "Alexis-Carrel", "J6K 4L5", "104");
 
         final Livre livre1 = service.saveLivre("Math 101", "Paul Laroche", 1999, "Roman", 2,"Éditions Soleil");
 
@@ -35,15 +35,15 @@ public class Tp3Application implements CommandLineRunner {
 
         final Cd cd1 = service.saveCd("Discovery", "Daft Punk", 2001, "Electronique", 1,"1h01", "Warner Music France");
 
-        /*System.out.println(service.findByAuteur("Paul Laroche"));
+        System.out.println(service.findByAuteur("Paul Laroche"));
         System.out.println(service.findByAnnee(2001));
         System.out.println(service.findByTitre("Math 101"));
         System.out.println(service.findByTitre("Star"));
-        System.out.println(service.findByCategorie("Roman"));*/
+        System.out.println(service.findByCategorie("Roman"));
 
         service.emprunterDocument(client1, livre1);
         service.emprunterDocument(client1, dvd1);
-        //service.retournerDocument(client1, livre1);
+        service.retournerDocument(client1, livre1);
 
         //System.out.println(service.listerEmprunts(1));
     }
