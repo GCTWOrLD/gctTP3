@@ -118,6 +118,6 @@ public class BiblioService {
     }
 
     /*public List<Emprunt> listerEmprunts(long idClient) {
-        //todo
+        return empruntRepository.findEmpruntsAndDateRetour(idClient);
     }*/
 }
