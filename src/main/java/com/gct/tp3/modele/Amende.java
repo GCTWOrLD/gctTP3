@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,7 +15,7 @@ public class Amende {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private int montant;
+    private double montant;
     private LocalDateTime dateRetard;
     private int nbDeJoursEnRetard;
     private String nomDuDocument;
@@ -24,7 +23,7 @@ public class Amende {
     @JoinColumn(name = "Client_ID")
     private Client client;
 
-    public Amende(int montant, LocalDateTime dateRetard, int nbDeJoursEnRetard, String nomDuDocument, Client client) {
+    public Amende(double montant, LocalDateTime dateRetard, int nbDeJoursEnRetard, String nomDuDocument, Client client) {
         this.montant = montant;
         this.dateRetard = dateRetard;
         this.nbDeJoursEnRetard = nbDeJoursEnRetard;

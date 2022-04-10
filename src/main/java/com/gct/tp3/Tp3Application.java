@@ -46,5 +46,8 @@ public class Tp3Application implements CommandLineRunner {
         service.retournerDocument(client1, livre1);
 
         //System.out.println(service.listerEmprunts(1));
+
+        service.genererAmendes();
+        service.genererAmendesBidon();
     }
 }

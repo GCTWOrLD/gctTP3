@@ -16,6 +16,8 @@ import java.util.List;
 @Component
 public class BiblioService {
 
+    private final double FRAIS_RETARD_PAR_JOUR = 0.25;
+
     @Autowired
     private AmendeRepository amendeRepository;
 
@@ -134,6 +136,33 @@ public class BiblioService {
             System.out.println("Frais payés.");
         } else {
             System.out.println("Vous n'avez pas de frais à payer.");
+        }
+    }
+
+    public void genererAmendes() {
+        List<Emprunt> emprunts = empruntRepository.findAll();
+        LocalDateTime now = LocalDateTime.now();
+        iterationDesEmpruntsPourGenererAmendes(emprunts, now);
+    }
+
+    public void genererAmendesBidon() {
+        List<Emprunt> emprunts = empruntRepository.findAll();
+        LocalDateTime now = LocalDateTime.now().plusDays(60);
+        iterationDesEmpruntsPourGenererAmendes(emprunts, now);
+    }
+
+    public void iterationDesEmpruntsPourGenererAmendes(List<Emprunt> emprunts, LocalDateTime now) {
+        for (Emprunt emprunt : emprunts) {
+            if (now.isAfter(emprunt.getDateRetour())) {
+                long jours = ChronoUnit.DAYS.between(emprunt.getDateRetour(), now);
+                double montant = jours * FRAIS_RETARD_PAR_JOUR;
+                amendeRepository.save(new Amende(montant, now.minusDays(jours), Math.toIntExact(jours),
+                        emprunt.getDocument().getTitre(),
+                        emprunt.getClient()));
+                System.out.println("Les amendes ont été générées.");
+            } else {
+                System.out.println("Aucun emprunts en retard.");
+            }
         }
     }
 
