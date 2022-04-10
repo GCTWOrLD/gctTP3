@@ -1,8 +1,10 @@
 package com.gct.tp3.controllers;
 
 import com.gct.tp3.forms.ClientForm;
+import com.gct.tp3.forms.EmpruntLivreForm;
 import com.gct.tp3.forms.LivreForm;
 import com.gct.tp3.modele.Client;
+import com.gct.tp3.modele.Emprunt;
 import com.gct.tp3.modele.Livre;
 import com.gct.tp3.service.BiblioService;
 import org.slf4j.Logger;
@@ -44,7 +46,8 @@ public class BiblioController {
     @PostMapping("/clientcreate")
     public String clientPost(@ModelAttribute ClientForm clientForm,
                              BindingResult errors,
-                             Model model,RedirectAttributes redirectAttributes) {
+                             Model model,
+                             RedirectAttributes redirectAttributes) {
         logger.info("client: " + clientForm);
         service.saveClient(clientForm.toClient());
         redirectAttributes.addFlashAttribute("clientForm", clientForm);
@@ -65,7 +68,8 @@ public class BiblioController {
     @PostMapping("/livrecreate")
     public String livrePost(@ModelAttribute LivreForm livreForm,
                              BindingResult errors,
-                             Model model,RedirectAttributes redirectAttributes) {
+                             Model model,
+                            RedirectAttributes redirectAttributes) {
         logger.info("livre: " + livreForm);
         service.saveLivre(livreForm.toLivre());
         redirectAttributes.addFlashAttribute("livreForm", livreForm);
@@ -73,4 +77,26 @@ public class BiblioController {
         model.addAttribute("livreForm", livreForm);
         return "redirect:livreedit/" + livreForm.getId();
     }
+
+    /*@GetMapping("/empruntcreate")
+    public String getEmpruntCreate(@ModelAttribute EmpruntLivreForm empruntLivreForm,
+                                   Model model,
+                                   RedirectAttributes redirectAttributes) {
+        empruntLivreForm = new EmpruntLivreForm(new Emprunt());
+        model.addAttribute("empruntLivreForm", empruntLivreForm);
+        return "empruntedit";
+    }
+
+    @PostMapping("/empruntcreate")
+    public String empruntLivrePost(@ModelAttribute EmpruntLivreForm empruntLivreForm,
+                                   BindingResult errors,
+                                   Model model,
+                                   RedirectAttributes redirectAttributes) {
+        logger.info(("emprunt: " + empruntLivreForm));
+        service.saveEmprunt(empruntLivreForm.toEmprunt());
+        redirectAttributes.addFlashAttribute("empruntLivreForm", empruntLivreForm);
+        model.addAttribute("pageTitle", "Emprunt Livre");
+        model.addAttribute("empruntLivreForm", empruntLivreForm);
+        return "redirect:empruntedit/" + empruntLivreForm.getId();
+    }*/
 }

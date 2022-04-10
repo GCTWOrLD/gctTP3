@@ -56,6 +56,18 @@ public class BiblioService {
         return documentRepository.save(new Cd(titre, auteur, annee, categorie, examplaires, duree, studio));
     }
 
+    public Emprunt saveEmprunt(Emprunt emprunt) {
+        return empruntRepository.save(emprunt);
+    }
+
+    public Client findByUsername(String username) {
+        return personneRepository.findByUsername(username);
+    }
+
+    public Livre findByTitreAndAuteur(String titreDocument, String auteurDocument) {
+        return documentRepository.findByTitreAndAuteur(titreDocument, auteurDocument);
+    }
+
     public List<Document> findByAuteur(String auteurDocument) {
         return documentRepository.findByAuteur(auteurDocument);
     }
