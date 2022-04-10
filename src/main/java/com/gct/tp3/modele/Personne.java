@@ -9,8 +9,8 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="Type_Personne")
-@Table(name="Personnes")
+@DiscriminatorColumn(name = "Type_Personne")
+@Table(name = "Personnes")
 public abstract class Personne {
 
     @Id

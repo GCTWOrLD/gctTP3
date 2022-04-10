@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name="Emprunt")
+@Table(name = "Emprunt")
 public class Emprunt {
 
     @Id
@@ -20,7 +20,7 @@ public class Emprunt {
     private LocalDateTime dateRetour;
 
     @ManyToOne
-    @JoinColumn(name="Client_ID")
+    @JoinColumn(name = "Client_ID")
     private Client client;
 
     @OneToOne(cascade = CascadeType.MERGE)

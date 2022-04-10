@@ -58,8 +58,8 @@ public class BiblioController {
 
     @GetMapping("/livrecreate")
     public String getLivreCreate(@ModelAttribute LivreForm livreForm,
-                                  Model model,
-                                  RedirectAttributes redirectAttributes) {
+                                 Model model,
+                                 RedirectAttributes redirectAttributes) {
         livreForm = new LivreForm(new Livre());
         model.addAttribute("livreForm", livreForm);
         return "livreedit";
@@ -67,8 +67,8 @@ public class BiblioController {
 
     @PostMapping("/livrecreate")
     public String livrePost(@ModelAttribute LivreForm livreForm,
-                             BindingResult errors,
-                             Model model,
+                            BindingResult errors,
+                            Model model,
                             RedirectAttributes redirectAttributes) {
         logger.info("livre: " + livreForm);
         service.saveLivre(livreForm.toLivre());
