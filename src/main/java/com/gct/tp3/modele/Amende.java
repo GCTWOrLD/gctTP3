@@ -1,10 +1,15 @@
 package com.gct.tp3.modele;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name="Amendes")
 public class Amende {
 
@@ -19,75 +24,11 @@ public class Amende {
     @JoinColumn(name = "Client_ID")
     private Client client;
 
-    public Amende() {
-
-    }
-
     public Amende(int montant, LocalDateTime dateRetard, int nbDeJoursEnRetard, String nomDuDocument, Client client) {
         this.montant = montant;
         this.dateRetard = dateRetard;
         this.nbDeJoursEnRetard = nbDeJoursEnRetard;
         this.nomDuDocument = nomDuDocument;
         this.client = client;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getMontant() {
-        return montant;
-    }
-
-    public void setMontant(int montant) {
-        this.montant = montant;
-    }
-
-    public LocalDateTime getDateRetard() {
-        return dateRetard;
-    }
-
-    public void setDateRetard(LocalDateTime dateRetard) {
-        this.dateRetard = dateRetard;
-    }
-
-    public int getNbDeJoursEnRetard() {
-        return nbDeJoursEnRetard;
-    }
-
-    public void setNbDeJoursEnRetard(int nbDeJoursEnRetard) {
-        this.nbDeJoursEnRetard = nbDeJoursEnRetard;
-    }
-
-    public String getNomDuDocument() {
-        return nomDuDocument;
-    }
-
-    public void setNomDuDocument(String nomDuDocument) {
-        this.nomDuDocument = nomDuDocument;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    @Override
-    public String toString() {
-        return "Amende{" +
-                "id=" + id +
-                ", montant=" + montant +
-                ", dateRetard=" + dateRetard +
-                ", nbDeJoursEnRetard=" + nbDeJoursEnRetard +
-                ", nomDuDocument='" + nomDuDocument + '\'' +
-                ", client=" + client +
-                '}';
     }
 }

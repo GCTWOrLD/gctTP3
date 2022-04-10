@@ -1,8 +1,13 @@
 package com.gct.tp3.modele;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="Type_Document")
 @Table(name="Documents")
@@ -17,75 +22,11 @@ public abstract class Document {
     private String categorie;
     private int examplaires;
 
-    public Document() {
-
-    }
-
     public Document(String titre, String auteur, int annee, String categorie, int examplaires) {
         this.titre = titre;
         this.auteur = auteur;
         this.annee = annee;
         this.categorie = categorie;
         this.examplaires = examplaires;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public String getAuteur() {
-        return auteur;
-    }
-
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
-    }
-
-    public int getAnnee() {
-        return annee;
-    }
-
-    public void setAnnee(int annee) {
-        this.annee = annee;
-    }
-
-    public String getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
-    }
-
-    public int getExamplaires() {
-        return examplaires;
-    }
-
-    public void setExamplaires(int examplaires) {
-        this.examplaires = examplaires;
-    }
-
-    @Override
-    public String toString() {
-        return "Document{" +
-                "id=" + id +
-                ", titre='" + titre + '\'' +
-                ", auteur='" + auteur + '\'' +
-                ", annee='" + annee + '\'' +
-                ", categorie='" + categorie + '\'' +
-                ", examplaires='" + examplaires + '\'' +
-                '}';
     }
 }
